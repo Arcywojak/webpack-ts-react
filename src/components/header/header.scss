@@ -1,0 +1,14 @@
+@import '../../styles.scss';
+
+.header{
+    width: 100%;
+    background-color: $primaryLight;  
+    padding: 20px 5vw 20px 20px;
+    
+    &__h2{
+        margin: 0;
+        text-align: right;
+        font-size: 28px;
+        color: $primaryAlmostDark
+    }
+}
