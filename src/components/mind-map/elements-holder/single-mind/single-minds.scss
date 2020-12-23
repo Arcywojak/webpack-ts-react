@@ -1,0 +1,16 @@
+@import '/src/styles.scss';
+
+
+.mind{
+    position: absolute;
+    padding: 10px 8px;
+    background-color: $primaryLight;
+    border: 2px solid $primaryAlmostDark;
+    color: $primaryAlmostDark;
+    border-radius: 12px;
+
+    &__paragraph{
+        font-weight: 500;
+        margin: 0;
+    }
+}

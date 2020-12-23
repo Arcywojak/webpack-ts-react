@@ -1,6 +1,7 @@
 import React from 'react'
 import {Mind, MindAction, MindContextValue} from '../../../models/mind.models';
 import SingleMind from './single-mind/single-mind';
+import './elements-holder.scss';
 
 const MindMap = (mindContextVal: MindContextValue) => {
 
@@ -10,7 +11,7 @@ const MindMap = (mindContextVal: MindContextValue) => {
     return (
         <div className="mind-map__elements-holder">
             {minds.map(mind => {
-                return (<SingleMind minds={minds} mindsDispatch={mindsDispatch} key={mind.id}></SingleMind>)
+                return (<SingleMind mind={mind} mindDispatch={mindsDispatch} key={mind.id}></SingleMind>)
             })}
         </div>
     )

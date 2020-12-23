@@ -7,7 +7,7 @@ export const MindContext = createContext(new MindContextValue());
 
 const MindContextProvider = ({children} : any) => {
     const localStorageService = new LocalStorageService('mind');
-    const [minds, mindsDispatch] = useReducer(mindReducer, [], () => (localStorageService.getItems<Mind[]>() || []) )
+    const [minds, mindsDispatch] = useReducer(mindReducer, [], (): any => (localStorageService.getItems() || []) )
 
     useEffect( () => {
         localStorageService.getItems();

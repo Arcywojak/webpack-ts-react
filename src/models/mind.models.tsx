@@ -4,8 +4,8 @@ export enum mindActionTypes {
 }
 
 export class Position {
-    x: Number;
-    y: Number;
+    x: number;
+    y: number;
 }
 
 export class Mind {
@@ -19,6 +19,11 @@ export class Mind {
 export class MindAction {
     type: mindActionTypes;
     payload: Mind[];
+}
+
+export class SingleMindProperties{
+    mind: Mind;
+    mindDispatch: React.Dispatch<MindAction>;
 }
 
 export class MindContextValue {

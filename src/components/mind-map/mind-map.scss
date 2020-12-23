@@ -1,7 +1,13 @@
-@import '../../styles.scss';
+@import '/src/styles.scss';
+
 
 .mind-map{
+    background-color: $primaryDark;
+    width: 100%;
+    height:calc(100vh - 150px);
+    position: relative;
+
     &__canvas{
-        background-color: $primaryDark;
+        
     }
 }
