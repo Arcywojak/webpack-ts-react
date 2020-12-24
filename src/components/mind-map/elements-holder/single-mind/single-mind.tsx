@@ -6,12 +6,12 @@ const SingleMind: React.FC<SingleMindProperties> = (props) => {
 
     const [blockPosition, setBlockPosition] = useState(props.mind.position);
     const [mousePositionWithinBlock, setMousePositionWithinBlock] = useState({x:0,y:0} as Position);
-    const [isMindToMove, setIsMindToMove] = useState(false);
+    const [canMindBeMoved, setCanMindBeMoved] = useState(false);
 
     const handleMouseMove = (e: any) => {
         e.preventDefault();
 
-        if (!isMindToMove) {
+        if (!canMindBeMoved) {
             return;
         }
 
@@ -25,7 +25,7 @@ const SingleMind: React.FC<SingleMindProperties> = (props) => {
     }
 
     const activateMovingMind = (e: any) => {
-        setIsMindToMove(true);
+        setCanMindBeMoved(true);
 
         const parentDistanceFromTheTopY = e.currentTarget.parentNode.getBoundingClientRect().top
 
@@ -36,7 +36,7 @@ const SingleMind: React.FC<SingleMindProperties> = (props) => {
     }
 
     const toggleMovingMind = () => {
-        setIsMindToMove(false);
+        setCanMindBeMoved(false);
     }
 
     return (
