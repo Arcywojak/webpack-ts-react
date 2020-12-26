@@ -18,7 +18,8 @@ export class Mind {
 
 export class MindAction {
     type: mindActionTypes;
-    payload: Mind[];
+    mind?: Mind;
+    mindId?: string;
 }
 
 export class SingleMindProperties{
@@ -29,4 +30,10 @@ export class SingleMindProperties{
 export class MindContextValue {
     minds: Mind[];
     mindsDispatch: React.Dispatch<MindAction>;
+}
+
+export class CreateMindDialogProps {
+    open: boolean;
+    parentId?: string;
+    onClose: (value: Mind) => void;
 }

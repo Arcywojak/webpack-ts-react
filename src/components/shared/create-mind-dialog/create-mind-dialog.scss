@@ -1,0 +1,33 @@
+@import '/src/styles.scss';
+
+.dialog{
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width:90vw;
+    max-width: 500px;
+    text-align: center;
+
+    &-title{
+        font-size: 28px;
+        margin-top: 0;
+    }
+}
+
+.text-field{
+    width:100%;
+}
+
+.buttons-wrapper{
+    display: grid;
+    grid-template-columns:repeat(2, calc(50% - 3px));
+    align-items: center;
+    justify-content: center;
+    margin: calc(15px + 3vw) auto 10px;
+    gap: 6px;
+}
+
+.dialog-button{
+    width: 100%;
+}

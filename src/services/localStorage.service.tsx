@@ -8,15 +8,8 @@ export class LocalStorageService {
     }
 
     public getItems<T>()  {
-       // const items = JSON.parse(localStorage.getItem(this.objectName)) || null;
+        const items = JSON.parse(localStorage.getItem(this.objectName)) || [];
 
-       const items = [
-           {
-            id: '111',
-            name: "New mind blah blah blah 111",
-            position: {x:0, y:0},
-           }
-       ]
         return items;
     }
 

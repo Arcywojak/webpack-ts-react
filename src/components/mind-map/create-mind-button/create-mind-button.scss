@@ -1,0 +1,36 @@
+@import '/src/styles.scss';
+
+.create-mind-button{
+    position: absolute;
+    margin: 0 auto;
+    top:calc(50% - 30px);
+    left:0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border: 4px solid $primaryAlmostLight;
+    border-radius: 4px;
+    background-color: $primaryDark;
+    cursor: pointer;
+}
+
+.plus-horizontal-line, .plus-vertical-line{
+    position: absolute;
+    background-color: $primaryLight;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+.plus-vertical-line{
+    width:6px;
+    height: 90%;
+    top:5%;
+}
+
+.plus-horizontal-line{
+    width: 90%;
+    height: 6px;
+    top: calc(50% - 3px);
+}
