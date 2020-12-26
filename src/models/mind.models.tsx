@@ -1,6 +1,7 @@
 export enum mindActionTypes {
     AddMind = 1,
     RemoveMind = 2,
+    UpdateItem = 3,
 }
 
 export class Position {
@@ -35,5 +36,5 @@ export class MindContextValue {
 export class CreateMindDialogProps {
     open: boolean;
     parentId?: string;
-    onClose: (value: Mind) => void;
+    onClose: (wasItemAdded?: boolean) => void;
 }

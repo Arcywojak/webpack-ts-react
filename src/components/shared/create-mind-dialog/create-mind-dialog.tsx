@@ -16,8 +16,12 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
         setMindSentence(e.target.value)
     }
 
-    const handleClose = () => {
-        onClose(new Mind)
+    const handleClose = (wasItemAdded?: boolean) => {
+        onClose(wasItemAdded)
+    }
+
+    const handleCloseWithoutCreating = () => {
+        onClose();
     }
 
     const handleSubmit = () => {
@@ -35,7 +39,7 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
             mind: newMind
         });
 
-        handleClose();
+        handleClose(true);
     }
 
 
@@ -61,7 +65,7 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
                             </Button>
                         </div>   
                         <div>
-                            <Button onClick={handleClose} variant="contained" className="dialog-button" >
+                            <Button onClick={handleCloseWithoutCreating} variant="contained" className="dialog-button" >
                                 Discard
                             </Button>
                         </div>          

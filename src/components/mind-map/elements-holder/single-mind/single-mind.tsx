@@ -1,10 +1,13 @@
 import React, {EventHandler, useState} from 'react'
-import {Mind, MindContextValue, Position, SingleMindProperties} from '../../../../models/mind.models';
+import {Mind, mindActionTypes, MindContextValue, Position, SingleMindProperties} from '../../../../models/mind.models';
+import { mindReducer } from '../../../../reducers/mind.reducer';
 import './single-minds.scss';
 
 const SingleMind: React.FC<SingleMindProperties> = (props) => {
 
-    const [blockPosition, setBlockPosition] = useState(props.mind.position);
+    const {mind, mindDispatch} = props;
+
+    const [blockPosition, setBlockPosition] = useState(mind.position);
     const [mousePositionWithinBlock, setMousePositionWithinBlock] = useState({x:0,y:0} as Position);
     const [canMindBeMoved, setCanMindBeMoved] = useState(false);
 
@@ -35,8 +38,20 @@ const SingleMind: React.FC<SingleMindProperties> = (props) => {
          });
     }
 
-    const toggleMovingMind = () => {
+    const deactivateMovingMind = () => {
         setCanMindBeMoved(false);
+
+        if (mind.position.x === blockPosition.x && mind.position.y === blockPosition.y) {
+            return;
+        }
+
+        let updatedMind = mind;
+        updatedMind.position = blockPosition;
+
+        mindDispatch({
+            type: mindActionTypes.UpdateItem,
+            mind: updatedMind
+        })
     }
 
     return (
@@ -44,9 +59,9 @@ const SingleMind: React.FC<SingleMindProperties> = (props) => {
          className="mind"
          style={{transform: `translate(${blockPosition.x}px, ${blockPosition.y}px)`}} 
          onMouseMove={handleMouseMove} 
-         onMouseUp={toggleMovingMind}  
+         onMouseUp={deactivateMovingMind}  
          onMouseDown={activateMovingMind} 
-         onMouseLeave={toggleMovingMind}>
+         onMouseLeave={deactivateMovingMind}>
             <p className="mind__paragraph">{props.mind.name}</p>
         </div>
     )

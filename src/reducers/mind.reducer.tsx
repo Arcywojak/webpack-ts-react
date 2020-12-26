@@ -12,6 +12,17 @@ export const mindReducer = (state: Mind[], action: MindAction): Mind[] => {
                 ];
                 localStorageService.setItems(newState);
                 return  newState;
+
+            case mindActionTypes.UpdateItem:
+                const updatedState = state.map(item => {
+                    if (item.id === action.mind.id) {
+                        return action.mind;
+                    }
+                    return item;
+                });
+                localStorageService.setItems(updatedState);
+                return updatedState;
+
             case mindActionTypes.RemoveMind:
                 return state;
         }
