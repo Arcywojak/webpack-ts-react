@@ -12,7 +12,7 @@ export default function App()
         <MindContextProvider>
             <Header/>
                 <MindMap/>
-            <Footer/>
+           
         </MindContextProvider>
         </>
     )

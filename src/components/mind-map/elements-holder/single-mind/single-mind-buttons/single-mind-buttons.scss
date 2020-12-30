@@ -1,0 +1,33 @@
+@import '/src/styles.scss';
+
+.floating-round-button{
+    border:1px solid $primaryAlmostLight;
+    background-color: $primaryAlmostDark;
+    border-radius: 50%;
+    position: absolute;
+    width:35px;
+    height: 35px;
+    bottom: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 500px;
+    opacity: 0;
+    transition: opacity ease-in-out .3s;
+    cursor: pointer;
+    outline:none;
+
+    .MuiSvgIcon-root{
+        width:25px;
+        height: 25px;
+        fill: $primaryLight;
+    }
+
+    &.add{
+        right: 5px;
+    }
+
+    &.remove{
+        left: 5px;
+    }
+}

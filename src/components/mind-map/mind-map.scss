@@ -1,10 +1,9 @@
 @import '/src/styles.scss';
 
-
 .mind-map{
     background-color: $primaryDark;
     width: 100%;
-    height:calc(100vh - 150px);
+    height:calc(100vh - 73.6px);
     position: relative;
 
     &__canvas{

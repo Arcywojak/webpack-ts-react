@@ -1,0 +1,50 @@
+@import '/src/styles.scss';
+
+.main-side-bar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:300px;
+    height: 100%;
+    background-color: $primaryLight;
+    color: $primaryDark;
+    border-top: 3px solid $primaryDark;
+    border-bottom: 3px solid $primaryDark;
+    padding: 8px;
+    z-index: 8;
+}
+
+.side-bar-paragraph{
+    p{
+        text-align: center;
+        font-size: 22px;
+        font-weight: 500;
+        margin: 0 0 8px;
+    }
+}
+
+.mind-map-button{
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+    border-bottom: 1px solid darken($primaryLight, 12%);
+
+    .MuiSvgIcon-root{
+        width:55px;
+        height: 55px;
+        fill: $primaryDark;
+    }
+
+    &.item{
+        padding: 8px;
+        text-overflow: ellipsis;
+        overflow: hidden; 
+        white-space: nowrap;
+        font-size: 18px;
+    }
+
+    &:hover, &.active{
+        background-color: darken($primaryLight, 5%);
+    }
+}

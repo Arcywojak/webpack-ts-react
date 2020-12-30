@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import './create-mind-dialog.scss';
+import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
 import {CreateMindDialogProps, Mind, mindActionTypes, Position} from '../../../models/mind.models';
 import {MindContext} from '../../../contexts/mind.context';
@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import { nanoid } from 'nanoid'    
 
 const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
-    const {onClose, open, parentId} = props;
+    const {onClose, open, parentId, pageId} = props;
     const [mindSentence, setMindSentence] = useState('');
     const {mindsDispatch} = useContext(MindContext);
 
@@ -16,30 +16,29 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
         setMindSentence(e.target.value)
     }
 
-    const handleClose = (wasItemAdded?: boolean) => {
-        onClose(wasItemAdded)
-    }
-
-    const handleCloseWithoutCreating = () => {
-        onClose();
+    const handleClose = () => {
+        onClose()
     }
 
     const handleSubmit = () => {
 
         const newMind = {
             id: nanoid(),
+            pageId: pageId,
             parentId: parentId || null,
             name: mindSentence,
-            position: {x: 200, y: 200} as Position,
-            nestedMinds: [] as Mind[]
-        };
+            position: {x: 200, y: 200} as Position
+        } as Mind;
 
         mindsDispatch({
             type: mindActionTypes.AddMind,
-            mind: newMind
+            mind: newMind,
+            pageId: pageId
         });
 
-        handleClose(true);
+        setMindSentence('');
+
+        handleClose();
     }
 
 
@@ -65,7 +64,7 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
                             </Button>
                         </div>   
                         <div>
-                            <Button onClick={handleCloseWithoutCreating} variant="contained" className="dialog-button" >
+                            <Button onClick={handleClose} variant="contained" className="dialog-button" >
                                 Discard
                             </Button>
                         </div>          

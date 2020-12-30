@@ -7,14 +7,14 @@ export const MindContext = createContext(new MindContextValue());
 
 const MindContextProvider = ({children} : any) => {
     const localStorageService = new LocalStorageService('mind');
-    const [minds, mindsDispatch] = useReducer(mindReducer, [], (): any => (localStorageService.getItems() || []) )
+    const [mindPages, mindsDispatch] = useReducer(mindReducer, [], (): any => (localStorageService.getItems() || []) )
 
     useEffect( () => {
         localStorageService.getItems();
-    }, [minds]);
+    }, [mindPages]);
 
     return (
-        <MindContext.Provider value = {{minds, mindsDispatch}}>
+        <MindContext.Provider value = {{mindPages, mindsDispatch}}>
             {children}
         </MindContext.Provider>
     )

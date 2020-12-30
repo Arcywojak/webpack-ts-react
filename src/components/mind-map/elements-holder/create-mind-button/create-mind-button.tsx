@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import './create-mind-button.scss'; 
-import CreateMindDialog from '../../shared/create-mind-dialog/create-mind-dialog';
-import { Mind } from '../../../models/mind.models';
+import CreateMindDialog from '../../../dialogs/create-mind-dialog/create-mind-dialog';
+import { Mind, CreateMindButtonProps } from '../../../../models/mind.models';
 import Snackbar from '@material-ui/core/Snackbar';
 
-const CreateMindButton = () => {
+const CreateMindButton = (props: CreateMindButtonProps) => {
     const [openDialog, setOpenDialog] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -13,10 +13,7 @@ const CreateMindButton = () => {
         setOpenDialog(true);
       };
     
-      const handleCloseDialog = (wasItemAdded?: boolean) => {
-        if (wasItemAdded) {
-            setOpenSnackbar(true);
-        }
+      const handleCloseDialog = () => {
         setOpenDialog(false);
       };
 
@@ -35,7 +32,7 @@ const CreateMindButton = () => {
             <div className="plus-horizontal-line"></div>
         </div>
 
-        <CreateMindDialog  open={openDialog} onClose={handleCloseDialog} />
+        <CreateMindDialog pageId={props.pageId}  open={openDialog} onClose={handleCloseDialog} />
 
         <Snackbar
         anchorOrigin={{

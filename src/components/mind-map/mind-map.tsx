@@ -1,27 +1,18 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import './mind-map.scss';
 import {MindContext} from '../../contexts/mind.context';
 import ElementsHolder from './elements-holder/elements-holder';
-import CreateMindButton from './create-mind-button/create-mind-button';
-import {Mind} from '../../models/mind.models';
+import SideBar from './side-bar/side-bar';
 
 const MindMap = () => {
-
-
-    const {minds, mindsDispatch} = useContext(MindContext);
-
-    console.log(minds, "Updated")
+    const {mindPages, mindsDispatch} = useContext(MindContext);
+    const [currentPage, setCurrentPage] = useState(null)
 
     return (
         <div className="mind-map">
-            <canvas  width="100px" height="100px" className="mind-map__canvas">
+            <SideBar mindPages={mindPages} currentPageId={currentPage && currentPage.id} setCurrentPage={setCurrentPage}/>
 
-            </canvas>
-            
-            <ElementsHolder minds={minds} mindsDispatch={mindsDispatch} />
-
-            <CreateMindButton/>
-           
+            <ElementsHolder mindPage={currentPage} mindsDispatch={mindsDispatch} />           
         </div>
     )
 }

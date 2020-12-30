@@ -8,9 +8,17 @@
     border: 2px solid $primaryAlmostDark;
     color: $primaryAlmostDark;
     border-radius: 12px;
+    min-width: 150px;
+    max-width: 350px;
+    text-align: center;
+    cursor: pointer;
 
     &__paragraph{
         font-weight: 500;
         margin: 0;
+    }
+
+    &:hover button{
+        opacity: 1;
     }
 }
