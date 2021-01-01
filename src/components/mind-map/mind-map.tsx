@@ -6,7 +6,7 @@ import SideBar from './side-bar/side-bar';
 
 const MindMap = () => {
     const {mindPages, mindsDispatch} = useContext(MindContext);
-    const [currentPage, setCurrentPage] = useState(null)
+    const [currentPage, setCurrentPage] = useState(mindPages[0] || null);
 
     return (
         <div className="mind-map">

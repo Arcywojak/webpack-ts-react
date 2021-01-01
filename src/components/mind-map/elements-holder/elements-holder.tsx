@@ -9,7 +9,6 @@ const MindMap = (props: ElementsHolderProps) => {
     let minds = props.mindPage && props.mindPage.minds;
     let id = props.mindPage && props.mindPage.id;
 
-    console.log(props)
     const mindsDispatch = props.mindsDispatch;
 
     return (

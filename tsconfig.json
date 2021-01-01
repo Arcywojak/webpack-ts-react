@@ -4,8 +4,13 @@
       "target": "es5",
       "module": "es6",
       "jsx": "react",
-      "moduleResolution": "Node",
+      "sourceMap": true,
+      "strict": true,
+      "types": ["node"],
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
       "noImplicitAny": true,
-      "allowSyntheticDefaultImports": true
+      "allowSyntheticDefaultImports": true,
+      "typeRoots": ["./src/@types", "./node_modules/@types"]
     }
-  }
+}
