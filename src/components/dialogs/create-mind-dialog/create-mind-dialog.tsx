@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {CreateMindDialogProps, Mind, mindActionTypes, Position} from '../../../models/mind.models';
+import {CreateMindDialogProps, Mind, mindActionTypes, Position, Dimensions} from '../../../models/mind.models';
 import {MindContext} from '../../../contexts/mind.context';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'; 
@@ -20,14 +20,37 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
         onClose()
     }
 
+    const letterWidth = 9.61;
+    const letterHeight = 21;
+    const leftAndRightPadding = 16;
+    const topAndBottomPadding = 20
+    const minBlockWidth = 130 + leftAndRightPadding;
+    const maxBlockWidth = 330 + leftAndRightPadding;
+
+    const calculateAverageMindHeight = (text: string) => {
+     const widthOfLetters = text.length * letterWidth;
+    
+     return (Math.ceil(widthOfLetters / maxBlockWidth)) * letterHeight + topAndBottomPadding;
+    }
+
+    const calculateAverageMindWidth = (text: string) => {
+        
+        
+        return Math.max(minBlockWidth, Math.min(text.length * letterWidth, maxBlockWidth));
+    }
+
     const handleSubmit = () => {
+
+        const averageMindWidth = calculateAverageMindWidth(mindSentence);
+        const averageMindHeight = calculateAverageMindHeight(mindSentence);
 
         const newMind = {
             id: nanoid(),
             pageId: pageId,
             parentId: parentId || null,
             name: mindSentence,
-            position: {x: 200, y: 200} as Position
+            position: {x: 200, y: 200} as Position,
+            averageMindDimenstionsInPx: {width: averageMindWidth, height: averageMindHeight} as Dimensions
         } as Mind;
 
         mindsDispatch({

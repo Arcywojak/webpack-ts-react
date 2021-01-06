@@ -11,12 +11,18 @@ export class Position {
     y: number;
 }
 
+export class Dimensions {
+    width: number;
+    height: number
+}
+
 export class Mind {
     id: string;
     parentId?: string;
     pageId: string;
     name: string;
     position: Position;
+    averageMindDimenstionsInPx: Dimensions;
 }
 
 export class MindAction {

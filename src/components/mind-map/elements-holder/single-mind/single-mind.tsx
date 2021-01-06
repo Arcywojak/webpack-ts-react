@@ -2,7 +2,6 @@ import React, {EventHandler, useState} from 'react'
 import {Mind, mindActionTypes, MindContextValue, Position, SingleMindProperties} from '../../../../models/mind.models';
 import './single-mind.scss';
 import SingleMindButtons from './single-mind-buttons/single-mind-buttons';
-import Snackbar from '@material-ui/core/Snackbar';
 
 const SingleMind = (props: SingleMindProperties) => {
 
@@ -12,16 +11,6 @@ const SingleMind = (props: SingleMindProperties) => {
     const [mousePositionWithinBlock, setMousePositionWithinBlock] = useState({x:0,y:0} as Position);
     const [canMindBeMoved, setCanMindBeMoved] = useState(false);
     const [canDialogBeOpen, setCanDialogBeOpen] = useState(true);
-
-
-      const handleCloseSnackbar = (event?: React.SyntheticEvent, reason?: string) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-     //   setOpenSnackbar(false);
-      };
-
 
     const handleMouseMove = (e: any) => {
         e.preventDefault();
@@ -37,6 +26,15 @@ const SingleMind = (props: SingleMindProperties) => {
             x: mouseX - mousePositionWithinBlock.x,
             y: mouseY - mousePositionWithinBlock.y
         });
+
+        let updatedMind = mind;
+        updatedMind.position = blockPosition;
+
+        mindDispatch({
+            type: mindActionTypes.UpdateMind,
+            mind: updatedMind,
+            pageId: pageId
+        })
     }
 
     const activateMovingMind = (e: any) => {
@@ -61,15 +59,6 @@ const SingleMind = (props: SingleMindProperties) => {
         if (canDialogBeOpen) {
             setCanDialogBeOpen(false);
         }
-
-        let updatedMind = mind;
-        updatedMind.position = blockPosition;
-
-        mindDispatch({
-            type: mindActionTypes.UpdateMind,
-            mind: updatedMind,
-            pageId: pageId
-        })
     }
 
     return (

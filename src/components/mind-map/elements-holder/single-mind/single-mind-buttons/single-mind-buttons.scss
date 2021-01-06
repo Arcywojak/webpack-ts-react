@@ -16,6 +16,7 @@
     transition: opacity ease-in-out .3s;
     cursor: pointer;
     outline:none;
+    z-index: 5;
 
     .MuiSvgIcon-root{
         width:25px;
