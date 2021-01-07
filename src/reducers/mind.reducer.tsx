@@ -43,6 +43,14 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                 return  newState;
 
             case mindActionTypes.RemoveMind:
+                const pageWithoutMind = currentMindPage?.minds.filter(mp => mp.id !== action.mindId);
+                newState = state.map(mindMap => {
+                    if (mindMap.id === currentMindPage.id) {
+                        return currentMindPage;
+                    };
+                    return mindMap;
+                })
+                localStorageService.setItems(newState);
                 return state;
         }
 }

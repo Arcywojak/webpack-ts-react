@@ -34,6 +34,7 @@ const MindMap = (props: ElementsHolderProps) => {
             return (
                 <svg className="svg-line" style={styles}>
                     <marker
+                    id={`triangle-${mind.id}`}
                     viewBox="0 0 10 10" refX="45" refY="5" 
                     markerUnits="strokeWidth"
                     markerWidth="10" markerHeight="8"
@@ -52,7 +53,7 @@ const MindMap = (props: ElementsHolderProps) => {
         <div className="mind-map__elements-holder">
             {minds && minds.map(mind => {
                 return (
-                <React.Fragment key={`${mind.id}xdd`}>
+                <React.Fragment key={mind.id}>
                 <SingleMind pageId={id} mind={mind} mindDispatch={mindsDispatch} ></SingleMind>
                 {<> {drawLine(mind)} </>}
                 </React.Fragment>

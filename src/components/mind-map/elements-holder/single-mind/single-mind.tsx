@@ -48,10 +48,10 @@ const SingleMind = (props: SingleMindProperties) => {
          });
     }
 
-    const deactivateMovingMind = (e:any) => {
+    const deactivateMovingMind = () => {
         setCanMindBeMoved(false);
 
-        if (mind.position.x === blockPosition.x && mind.position.y === blockPosition.y) {
+        if ( Math.abs(mind.position.x - blockPosition.x) < 5 && Math.abs(mind.position.y - blockPosition.y) < 5 ){
             setCanDialogBeOpen(true);
             return;
         }

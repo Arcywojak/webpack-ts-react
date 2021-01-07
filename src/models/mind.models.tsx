@@ -53,12 +53,18 @@ export class CreateMindDialogProps {
     open: boolean;
     pageId: string;
     parentId?: string;
-    onClose: (wasItemAdded?: boolean) => void;
+    onClose: () => void;
+}
+
+export class DeleteMindDialogProps {
+    open: boolean;
+    pageId: string;
+    mindId: string;
 }
 
 export class CreateMindMapDialogProps {
     open: boolean;
-    onClose: (wasItemAdded?: boolean) => void;
+    onClose: () => void;
 }
 
 export class SingleMindButtonsProps {
