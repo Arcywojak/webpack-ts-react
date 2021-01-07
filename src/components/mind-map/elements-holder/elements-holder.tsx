@@ -19,8 +19,6 @@ const MindMap = (props: ElementsHolderProps) => {
         const parent = minds.find(m => parentId === m.id); 
 
         if(parent) {
-            const x1ForLine = mind.averageMindDimenstionsInPx.width / 2;
-            const y1ForLine = mind.averageMindDimenstionsInPx.height / 2;
             const x2ForLine = mind?.position.x - parent?.position.x
             const y2ForLine = mind?.position.y - parent?.position.y;
 

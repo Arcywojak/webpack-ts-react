@@ -3,6 +3,11 @@ import {LocalStorageService} from '../services/localStorage.service';
 
 const localStorageService = new LocalStorageService('mind')
 
+const filterMindPageFromMinds = (mindPage: MindPage, id: string) => {
+    let filtered = mindPage.minds.filter(m => m.id !== id);
+ //   filtered = filterMindPageFromMinds(filtered, )
+}
+
 export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] => {
     let currentMindPage = state.find(mindMap => mindMap.id === action.pageId);
     let newState: MindPage[] = [];
@@ -43,7 +48,16 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                 return  newState;
 
             case mindActionTypes.RemoveMind:
-                const pageWithoutMind = currentMindPage?.minds.filter(mp => mp.id !== action.mindId);
+                let idsToRemove = [action.mindId];
+                currentMindPage.minds = currentMindPage?.minds.filter(mp => {
+                    const idToRemove = idsToRemove.find(id => id === mp.id || id === mp.parentId);
+                    if (idToRemove) {
+                        idsToRemove.push(idToRemove);
+                        return false;
+                    }
+                    return true;
+                });
+            
                 newState = state.map(mindMap => {
                     if (mindMap.id === currentMindPage.id) {
                         return currentMindPage;
@@ -51,6 +65,6 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                     return mindMap;
                 })
                 localStorageService.setItems(newState);
-                return state;
+                return newState;
         }
 }

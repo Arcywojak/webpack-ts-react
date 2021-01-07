@@ -1,5 +1,5 @@
-import React, {EventHandler, useState} from 'react'
-import {Mind, mindActionTypes, MindContextValue, Position, SingleMindProperties} from '../../../../models/mind.models';
+import React, {useState} from 'react'
+import {mindActionTypes, Position, SingleMindProperties} from '../../../../models/mind.models';
 import './single-mind.scss';
 import SingleMindButtons from './single-mind-buttons/single-mind-buttons';
 
@@ -8,6 +8,7 @@ const SingleMind = (props: SingleMindProperties) => {
     const {mind, pageId, mindDispatch} = props;
 
     const [blockPosition, setBlockPosition] = useState(mind.position);
+    const [positionBeforeMove, setPositionBeforeMove] = useState(blockPosition);
     const [mousePositionWithinBlock, setMousePositionWithinBlock] = useState({x:0,y:0} as Position);
     const [canMindBeMoved, setCanMindBeMoved] = useState(false);
     const [canDialogBeOpen, setCanDialogBeOpen] = useState(true);
@@ -51,12 +52,10 @@ const SingleMind = (props: SingleMindProperties) => {
     const deactivateMovingMind = () => {
         setCanMindBeMoved(false);
 
-        if ( Math.abs(mind.position.x - blockPosition.x) < 5 && Math.abs(mind.position.y - blockPosition.y) < 5 ){
+        if ( positionBeforeMove === blockPosition ) {
             setCanDialogBeOpen(true);
-            return;
-        }
-
-        if (canDialogBeOpen) {
+        } else {
+            setPositionBeforeMove(blockPosition);
             setCanDialogBeOpen(false);
         }
     }
