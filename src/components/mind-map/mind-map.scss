@@ -3,10 +3,7 @@
 .mind-map{
     background-color: $primaryDark;
     width: 100%;
-    height:calc(100vh - 73.6px);
+    height:calc(100vh - 80px);
     position: relative;
-
-    &__canvas{
-        
-    }
+    overflow: hidden;
 }

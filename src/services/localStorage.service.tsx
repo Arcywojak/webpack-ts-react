@@ -7,7 +7,7 @@ export class LocalStorageService {
         this.objectName = objectName;
     }
 
-    public getItems<T>()  {
+    public getItems()  {
         const items = JSON.parse(localStorage.getItem(this.objectName)) || [];
 
         return items;
