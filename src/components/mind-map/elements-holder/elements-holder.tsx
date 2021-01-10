@@ -47,12 +47,8 @@ const MindMap = (props: ElementsHolderProps) => {
         }
     }
 
-    const wheel = (event: any) => {
-       event.preventDefault();
-    }
-
     return (
-        <div className="mind-map__elements-holder" onWheel={wheel}>
+        <div className="mind-map__elements-holder">
             {minds && minds.map(mind => {
                 return (
                 <React.Fragment key={mind.id}>
