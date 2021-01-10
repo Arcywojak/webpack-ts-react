@@ -3,16 +3,18 @@ import {LocalStorageService} from '../services/localStorage.service';
 
 const localStorageService = new LocalStorageService('mind')
 
+const emptyState = [] as MindPage[];
+
 export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] => {
-    let currentMindPage = state.find(mindMap => mindMap.id === action.pageId);
+    let currentMindPage = state.find(mindMap => mindMap.id === action.pageId) as MindPage;
     let newState: MindPage[] = [];
 
         switch (action.type) {
             case mindActionTypes.AddMindPage:
-                return [...state, action.mindPage];
+                return [...state, action.mindPage] as MindPage[];
                 
             case mindActionTypes.AddMind:
-                currentMindPage.minds.push(action.mind);
+                currentMindPage.minds.push(action.mind!);
 
                 newState = state.map(mindMap => {
                     if (mindMap.id === currentMindPage.id) {
@@ -26,7 +28,7 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
 
             case mindActionTypes.UpdateMind:
                 currentMindPage.minds.map(mind => {
-                    if (mind.id === action.mind.id) {
+                    if (mind.id === action?.mind?.id) {
                         return action.mind;
                     }
                     return mind;
@@ -52,5 +54,6 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                 })
                 localStorageService.setItems(newState);
                 return state;
+            default: return state;
         }
 }
