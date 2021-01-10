@@ -3,20 +3,14 @@ import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
 import {DeleteMindDialogProps, mindActionTypes} from '../../../models/mind.models';
 import {MindContext} from '../../../contexts/mind.context';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'; 
 
 const DeleteMindDialog = (props: DeleteMindDialogProps) => {
-    const {open, pageId, mindId} = props;
-    const [mindSentence, setMindSentence] = useState('');
+    const {open, pageId, mindId, onClose} = props;
     const {mindPages, mindsDispatch} = useContext(MindContext);
 
-    const handleChange = (e: any) => {
-        setMindSentence(e.target.value)
-    }
-
     const handleClose = () => {
-        return;
+        onClose();
     }
 
     const handleSubmit = () => {
@@ -36,10 +30,10 @@ const DeleteMindDialog = (props: DeleteMindDialogProps) => {
     return (
         <Dialog onClose={handleClose}  open={open}>
             <div className="dialog">
-                <h3 className="dialog-title">Are you sure to delete the mind and all of his children?</h3>
+                <h5 className="dialog-smaller-title">Are you sure to delete the mind and all of its children?</h5>
                     <div className="buttons-wrapper">
                         <div>
-                            <Button onClick={handleSubmit} variant="contained" disabled={mindSentence.length === 0 ? true : false} color="primary" className="dialog-button">
+                            <Button onClick={handleSubmit} variant="contained" color="primary" className="dialog-button">
                                 Delete
                             </Button>
                         </div>   

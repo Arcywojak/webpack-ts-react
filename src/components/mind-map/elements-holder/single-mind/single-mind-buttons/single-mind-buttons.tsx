@@ -14,6 +14,7 @@ const SingleMindButtons = (props: SingleMindButtonsProps) => {
 
     const handleOpenAddDialog = () => {
         if (canDialogBeOpen) {
+          console.log(canDialogBeOpen)
             setOpenAddDialog(true);
         }
       };
@@ -24,17 +25,17 @@ const SingleMindButtons = (props: SingleMindButtonsProps) => {
 
     const handleOpenDeleteDialog = () => {
         if (canDialogBeOpen) {
-            setOpenAddDialog(true);
+            setOpenDeleteDialog(true);
         }
       };
     
     const handleCloseDeleteDialog = () => {
-        setOpenAddDialog(false);
+        setOpenDeleteDialog(false);
       };
 
     return (
         <>
-            <button onClick={handleOpenAddDialog} className="floating-round-button add">
+            <button onClick={handleOpenDeleteDialog} className="floating-round-button add">
                 <DeleteForeverIcon/>
             </button>
 
@@ -43,7 +44,7 @@ const SingleMindButtons = (props: SingleMindButtonsProps) => {
             </button>
 
             <CreateMindDialog pageId={pageId}  open={openAddDialog} onClose={handleCloseAddDialog} parentId={mind.id}/> 
-            <DeleteMindDialog pageId={pageId}  open={openAddDialog} mindId={mind.id}/> 
+            <DeleteMindDialog pageId={pageId}  open={openDeleteDialog} onClose={handleCloseDeleteDialog} mindId={mind.id}/> 
 
         </>
     )

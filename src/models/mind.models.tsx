@@ -60,6 +60,7 @@ export class DeleteMindDialogProps {
     open: boolean;
     pageId: string;
     mindId: string;
+    onClose: () => void;
 }
 
 export class CreateMindMapDialogProps {
