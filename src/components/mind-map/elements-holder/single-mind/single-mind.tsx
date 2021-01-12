@@ -24,8 +24,8 @@ const SingleMind = (props: SingleMindProperties) => {
         const mouseY = e.clientY;
 
         setBlockPosition({
-            x: mouseX - mousePositionWithinBlock.x,
-            y: mouseY - mousePositionWithinBlock.y
+            x: (mouseX*1.25 - mousePositionWithinBlock.x),
+            y: (mouseY*1.25 - mousePositionWithinBlock.y)
         });
 
         let updatedMind = mind;
@@ -44,8 +44,8 @@ const SingleMind = (props: SingleMindProperties) => {
         const parentDistanceFromTheTopY = e.currentTarget.parentNode.getBoundingClientRect().top
 
         setMousePositionWithinBlock({
-            x: e.clientX - e.currentTarget.getBoundingClientRect().left,
-            y: e.clientY + parentDistanceFromTheTopY - e.currentTarget.getBoundingClientRect().top
+            x: (e.clientX - e.currentTarget.getBoundingClientRect().left)*1.25,
+            y: (e.clientY + parentDistanceFromTheTopY - e.currentTarget.getBoundingClientRect().top)*1.25
          });
     }
 
