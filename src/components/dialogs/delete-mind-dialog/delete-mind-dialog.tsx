@@ -1,7 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {DeleteMindDialogProps, mindActionTypes} from '../../../models/mind.models';
+import {mindActionTypes} from '../../../models/models';
+import {DeleteMindDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import Button from '@material-ui/core/Button'; 
 

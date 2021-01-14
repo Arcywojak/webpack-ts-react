@@ -4,7 +4,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import AddIcon from '@material-ui/icons/Add';
 import CreateMindDialog from '../../../../dialogs/create-mind-dialog/create-mind-dialog';
 import DeleteMindDialog from '../../../../dialogs/delete-mind-dialog/delete-mind-dialog';
-import {SingleMindButtonsProps} from '../../../../../models/mind.models'
+import {SingleMindButtonsProps} from '../../../../../models/components-props';
 
 const SingleMindButtons = (props: SingleMindButtonsProps) => {
     const {mind, canDialogBeOpen, pageId} = props;

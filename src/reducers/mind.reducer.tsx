@@ -1,4 +1,4 @@
-import {mindActionTypes, Mind, MindAction, MindPage} from '../models/mind.models';
+import {mindActionTypes, Mind, MindAction, MindPage} from '../models/models';
 import {LocalStorageService} from '../services/localStorage.service';
 
 const localStorageService = new LocalStorageService('mind')

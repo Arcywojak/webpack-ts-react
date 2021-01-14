@@ -2,7 +2,8 @@ import '../custom-dialog-styles.scss';
 import React, {useState, useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {CreateMindMapDialogProps , mindActionTypes, Position, MindPage} from '../../../models/mind.models';
+import {mindActionTypes, MindPage} from '../../../models/models';
+import {CreateMindMapDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'; 

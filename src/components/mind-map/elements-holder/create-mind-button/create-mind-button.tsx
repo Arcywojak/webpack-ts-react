@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './create-mind-button.scss'; 
 import CreateMindDialog from '../../../dialogs/create-mind-dialog/create-mind-dialog';
-import { Mind, CreateMindButtonProps } from '../../../../models/mind.models';
+import {CreateMindButtonProps } from '../../../../models/components-props';
 import Snackbar from '@material-ui/core/Snackbar';
 
 const CreateMindButton = (props: CreateMindButtonProps) => {

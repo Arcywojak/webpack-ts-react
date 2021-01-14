@@ -1,5 +1,6 @@
 import React from 'react'
-import { ElementsHolderProps, Mind} from '../../../models/mind.models';
+import {Mind} from '../../../models/models';
+import {ElementsHolderProps} from '../../../models/components-props';
 import SingleMind from './single-mind/single-mind';
 import './elements-holder.scss';
 import CreateMindButton from './create-mind-button/create-mind-button';
@@ -8,6 +9,8 @@ const MindMap = (props: ElementsHolderProps) => {
 
     let minds = props.mindPage && props.mindPage.minds;
     let id = props.mindPage && props.mindPage.id;
+
+    const {scaleRate} = props;
 
     const mindsDispatch = props.mindsDispatch;
 
@@ -47,12 +50,18 @@ const MindMap = (props: ElementsHolderProps) => {
         }
     }
 
+    const stylesAccordingToScaleRate = {
+        width: `${100 * 1/scaleRate}%`,
+        height:`${100 * 1/scaleRate}%`,
+        transform: `scale(${scaleRate})`
+    }
+
     return (
-        <div className="mind-map__elements-holder">
+        <div className="mind-map__elements-holder" style={stylesAccordingToScaleRate}>
             {minds && minds.map(mind => {
                 return (
                 <React.Fragment key={mind.id}>
-                <SingleMind pageId={id} mind={mind} mindDispatch={mindsDispatch} ></SingleMind>
+                <SingleMind scaleRate={scaleRate} pageId={id} mind={mind} mindDispatch={mindsDispatch} ></SingleMind>
                 {<> {drawLine(mind)} </>}
                 </React.Fragment>
                 )

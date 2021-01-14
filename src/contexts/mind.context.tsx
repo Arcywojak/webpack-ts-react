@@ -1,7 +1,7 @@
 import React, {createContext, useEffect, useReducer} from 'react';
 import {mindReducer} from '../reducers/mind.reducer';
 import {LocalStorageService} from '../services/localStorage.service';
-import {Mind, MindContextValue} from '../models/mind.models';
+import {Mind, MindContextValue} from '../models/models';
 
 export const MindContext = createContext(new MindContextValue());
 

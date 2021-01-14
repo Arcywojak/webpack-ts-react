@@ -1,0 +1,52 @@
+@import '/src/styles.scss';
+
+.scale-slider{
+    display: grid;
+    grid-template-columns:25px calc(100% - 25px);
+    background-color: $primaryLight;
+    color: $primaryDark;
+    position: absolute;
+    top:15px;
+    right:0;
+    width:170px;
+    &-content{
+        h4, h5{
+            text-align: center;
+            margin: 0;
+        }
+        padding: 8px;
+    }
+
+    &-value{
+        h5{
+            text-align: left;
+        }
+        
+        span{
+            font-weight: 700;
+            padding: 0 0 0 8px;
+        }
+    }
+
+    &-closer{
+        border-right: 1px solid $primaryDark;
+        padding-right: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: darken($primaryLight, 8%);
+        width:20px;
+        cursor: pointer;
+    
+        img{
+            width: 90%;
+            transform: rotate(180deg);
+        }
+        
+    }
+
+    transition: transform 0.4s ease-in-out;
+    &.hidden{
+        transform: translateX(calc(100% - 20px));
+    }
+}

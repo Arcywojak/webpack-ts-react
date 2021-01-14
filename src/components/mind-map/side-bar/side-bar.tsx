@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import './side-bar.scss';
 import AddIcon from '@material-ui/icons/Add';
-import { MindPage, SideBarProps } from '../../../models/mind.models';
+import { MindPage} from '../../../models/models';
+import {SideBarProps} from '../../../models/components-props';
 import CreateMindPageDialog from '../../dialogs/create-mind-page-dialog/create-mind-page-dialog';
 import closeTriangleUrl from '../../../assets/images/closeTriangle.svg';
 

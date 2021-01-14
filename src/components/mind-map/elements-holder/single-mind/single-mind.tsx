@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
-import {mindActionTypes, Position, SingleMindProperties} from '../../../../models/mind.models';
+import {mindActionTypes, Position} from '../../../../models/models';
+import {SingleMindProps} from '../../../../models/components-props';
 import './single-mind.scss';
 import SingleMindButtons from './single-mind-buttons/single-mind-buttons';
 
-const SingleMind = (props: SingleMindProperties) => {
+const SingleMind = (props: SingleMindProps) => {
 
-    const {mind, pageId, mindDispatch} = props;
+    const {scaleRate, mind, pageId, mindDispatch} = props;
 
     const [blockPosition, setBlockPosition] = useState(mind.position);
     const [positionBeforeMove, setPositionBeforeMove] = useState(blockPosition);
@@ -24,8 +25,8 @@ const SingleMind = (props: SingleMindProperties) => {
         const mouseY = e.clientY;
 
         setBlockPosition({
-            x: (mouseX*1.25 - mousePositionWithinBlock.x),
-            y: (mouseY*1.25 - mousePositionWithinBlock.y)
+            x: (mouseX*(1/scaleRate) - mousePositionWithinBlock.x),
+            y: (mouseY*(1/scaleRate) - mousePositionWithinBlock.y)
         });
 
         let updatedMind = mind;
@@ -44,8 +45,8 @@ const SingleMind = (props: SingleMindProperties) => {
         const parentDistanceFromTheTopY = e.currentTarget.parentNode.getBoundingClientRect().top
 
         setMousePositionWithinBlock({
-            x: (e.clientX - e.currentTarget.getBoundingClientRect().left)*1.25,
-            y: (e.clientY + parentDistanceFromTheTopY - e.currentTarget.getBoundingClientRect().top)*1.25
+            x: (e.clientX - e.currentTarget.getBoundingClientRect().left)*(1/scaleRate),
+            y: (e.clientY + parentDistanceFromTheTopY - e.currentTarget.getBoundingClientRect().top)*(1/scaleRate)
          });
     }
 
