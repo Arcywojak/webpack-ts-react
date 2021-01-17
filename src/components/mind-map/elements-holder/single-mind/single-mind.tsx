@@ -35,7 +35,8 @@ const SingleMind = (props: SingleMindProps) => {
         mindDispatch({
             type: mindActionTypes.UpdateMind,
             mind: updatedMind,
-            pageId: pageId
+            pageId: pageId,
+            shouldSavingBePrevented: true
         })
     }
 
@@ -58,35 +59,36 @@ const SingleMind = (props: SingleMindProps) => {
         } else {
             setPositionBeforeMove(blockPosition);
             setCanDialogBeOpen(false);
+
+            mindDispatch({
+                type: mindActionTypes.UpdateMind,
+                mind: mind,
+                pageId: pageId
+            });
         }
+    }
+
+    const styles = {
+        transform: `translate(${blockPosition.x}px, ${blockPosition.y}px)`,
+        backgroundColor: mind.colorStyle.backgroundColor,
+        color: mind.colorStyle.color,
+        borderColor: mind.colorStyle.borderColor
     }
 
     return (
         <>
             <div 
             className="mind"
-            style={{transform: `translate(${blockPosition.x}px, ${blockPosition.y}px)`}} 
+            style={styles} 
             onMouseMove={handleMouseMove} 
             onMouseUp={deactivateMovingMind}  
             onMouseDown={activateMovingMind} 
             onMouseLeave={deactivateMovingMind}>
-                <p className="mind__paragraph">{props.mind.name}</p>
+                <p className="mind__paragraph">{mind.name}</p>
 
                 <SingleMindButtons canDialogBeOpen={canDialogBeOpen} mind={mind} pageId={pageId}/>
 
             </div>
-
-
-        {/*    <Snackbar
-            anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-            }}
-            open={openSnackbar}
-            autoHideDuration={3000}
-            onClose={handleCloseSnackbar}
-            message="New mind created successfully!"
-        />*/}
         </>
     )
 }

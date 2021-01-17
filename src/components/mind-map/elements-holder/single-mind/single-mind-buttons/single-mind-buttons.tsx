@@ -33,14 +33,24 @@ const SingleMindButtons = (props: SingleMindButtonsProps) => {
         setOpenDeleteDialog(false);
       };
 
+    const stylesForIconWrapper = {
+      backgroundColor: mind.colorStyle.backgroundColor,
+      borderColor: mind.colorStyle.color,
+      fill: mind.colorStyle.color
+    }
+
+    const iconFill = {
+      fill: mind.colorStyle.color
+    }
+
     return (
         <>
-            <button onClick={handleOpenDeleteDialog} className="floating-round-button add">
-                <DeleteForeverIcon/>
+            <button onClick={handleOpenDeleteDialog} className="floating-round-button add" style={stylesForIconWrapper}>
+                <DeleteForeverIcon style={iconFill}/>
             </button>
 
-            <button onClick={handleOpenAddDialog} className="floating-round-button remove">
-                 <AddIcon/>
+            <button onClick={handleOpenAddDialog} className="floating-round-button remove" style={stylesForIconWrapper}>
+                 <AddIcon style={iconFill}/>
             </button>
 
             <CreateMindDialog pageId={pageId}  open={openAddDialog} onClose={handleCloseAddDialog} parentId={mind.id}/> 

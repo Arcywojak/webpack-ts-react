@@ -1,4 +1,3 @@
-import {Mind} from '../models/mind.models';
 
 export class LocalStorageService {
     private objectName: string;
@@ -8,7 +7,7 @@ export class LocalStorageService {
     }
 
     public getItems()  {
-        const items = JSON.parse(localStorage.getItem(this.objectName)) || [];
+        const items = JSON.parse(localStorage.getItem(this.objectName) || '') || [];
 
         return items;
     }

@@ -1,20 +1,30 @@
 import React, {useState, useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {Mind, mindActionTypes, Position, Dimensions} from '../../../models/models';
+import {Mind, mindActionTypes, Position, Dimensions, ColorStyle} from '../../../models/models';
 import {CreateMindDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'; 
-import { nanoid } from 'nanoid'    
+import { nanoid } from 'nanoid'   
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel'; 
+import Radio from '@material-ui/core/Radio';
+import {DEFAULT_COLOR_STYLE, COLOR_STYLES} from '../../../constants/colors_const';
 
 const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
     const {onClose, open, parentId, pageId} = props;
     const [mindSentence, setMindSentence] = useState('');
+    const [colorStyle, setColorStyle] = useState(JSON.stringify(DEFAULT_COLOR_STYLE));
     const {mindsDispatch} = useContext(MindContext);
 
-    const handleChange = (e: any) => {
+    const handleChangeSentence = (e: any) => {
         setMindSentence(e.target.value)
+    }
+
+    const handleChangeColor = (e:any) => {
+        // value comes as a stringified json to prevent it to be [object object]
+        setColorStyle(e.target.value);
     }
 
     const handleClose = () => {
@@ -50,8 +60,9 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
             pageId: pageId,
             parentId: parentId || null,
             name: mindSentence,
-            position: {x: 200, y: 200} as Position,
-            averageMindDimenstionsInPx: {width: averageMindWidth, height: averageMindHeight} as Dimensions
+            position: {x: window.innerWidth/2 - averageMindWidth/2, y: window.innerHeight/2 - 80 - averageMindHeight/2} as Position,
+            averageMindDimenstionsInPx: {width: averageMindWidth, height: averageMindHeight} as Dimensions,
+            colorStyle: JSON.parse(colorStyle) as ColorStyle
         } as Mind;
 
         mindsDispatch({
@@ -79,7 +90,32 @@ const CreateMindDialog: React.FC<CreateMindDialogProps> = (props) => {
                     multiline
                     rowsMax={4}
                     value={mindSentence}
-                    onChange={handleChange}/>
+                    onChange={handleChangeSentence}/>
+
+                    <h4 className="input-title">
+                        Color style
+                    </h4>
+                    <RadioGroup  aria-label="Color style" name="color" value={colorStyle} onChange={handleChangeColor}>
+                        {
+                            COLOR_STYLES.map(color => {
+
+                                const colorStyles = {
+                                    backgroundColor: color.backgroundColor,
+                                    color: color.color,
+                                    borderColor: color.borderColor
+                                }
+
+                                return (
+                                    <div key={color.colorStyleId} className="colors-radio-input">
+                                        <FormControlLabel  value={JSON.stringify(color)} control={<Radio color="primary" />} label={''} />
+                                        <div style={colorStyles} className="color-style-appearance">
+                                             abc
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </RadioGroup>
 
                     <div className="buttons-wrapper">
                         <div>

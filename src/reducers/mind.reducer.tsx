@@ -9,7 +9,8 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
 
         switch (action.type) {
             case mindActionTypes.AddMindPage:
-                return [...state, action.mindPage] as MindPage[];
+                newState = [...state, action.mindPage] as MindPage[];
+                break;
                 
             case mindActionTypes.AddMind:
                 currentMindPage.minds.push(action.mind!);
@@ -21,8 +22,7 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                     return mindMap;
                 })
                  
-                localStorageService.setItems(newState);
-                return  newState;
+                break;
 
             case mindActionTypes.UpdateMind:
                 currentMindPage.minds.map(mind => {
@@ -39,8 +39,7 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                     return mindMap;
                 })
                  
-                localStorageService.setItems(newState);
-                return  newState;
+                break;
 
             case mindActionTypes.RemoveMind:
                 let idsToRemove = [action.mindId];
@@ -59,8 +58,14 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                     };
                     return mindMap;
                 })
-                localStorageService.setItems(newState);
-                return state;
-            default: return state;
+                break;
+
+            default: break;
         }
+
+        if (!action.shouldSavingBePrevented) {
+            localStorageService.setItems(newState);
+        };
+
+        return newState;
 }

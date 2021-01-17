@@ -8,7 +8,7 @@ import ScaleSlider from './scale-slider/scale-slider';
 const MindMap = () => {
     const {mindPages, mindsDispatch} = useContext(MindContext);
     const [currentPage, setCurrentPage] = useState(mindPages[0] || null);
-    const [scaleRate, setScaleRate] = useState(1)
+    const [scaleRate, setScaleRate] = useState(1);
 
     return (
         <div className="mind-map">
@@ -16,7 +16,7 @@ const MindMap = () => {
 
             <ElementsHolder scaleRate={scaleRate} mindPage={currentPage} mindsDispatch={mindsDispatch} /> 
 
-            <ScaleSlider scaleRate={scaleRate} setScaleRate={setScaleRate} />          
+            <ScaleSlider scaleRate={scaleRate} setScaleRate={setScaleRate} />         
         </div>
     )
 }

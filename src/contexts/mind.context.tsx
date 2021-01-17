@@ -1,9 +1,9 @@
 import React, {createContext, useEffect, useReducer} from 'react';
 import {mindReducer} from '../reducers/mind.reducer';
 import {LocalStorageService} from '../services/localStorage.service';
-import {Mind, MindContextValue} from '../models/models';
+import {MindContextValue} from '../models/models';
 
-export const MindContext = createContext(new MindContextValue());
+export const MindContext = createContext({} as MindContextValue);
 
 const MindContextProvider = ({children} : any) => {
     const localStorageService = new LocalStorageService('mind');
