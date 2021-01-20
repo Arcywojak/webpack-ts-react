@@ -23,10 +23,16 @@
     }
 
     &.add{
-        right: 5px;
+        left: 5px;
     }
 
     &.remove{
-        left: 5px;
+        right: 5px;
+    }
+
+    &.edit{
+        left: 0;
+        right: 0;
+        margin: 0 auto;
     }
 }

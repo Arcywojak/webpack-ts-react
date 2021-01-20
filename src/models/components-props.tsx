@@ -1,4 +1,5 @@
 import {Mind, MindAction, MindPage} from './models';
+import {ManipulateMindAction} from './enums';
 
 export class SingleMindProps {
     scaleRate: number;
@@ -13,10 +14,12 @@ export class ElementsHolderProps {
     mindsDispatch: React.Dispatch<MindAction>;
 }
 
-export class CreateMindDialogProps {
+export class ManipulateMindDialogProps {
     open: boolean;
     pageId: string;
     parentId?: string;
+    mind?: Mind;
+    manipulateMindAction: ManipulateMindAction;
     onClose: () => void;
 }
 

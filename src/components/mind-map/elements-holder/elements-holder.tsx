@@ -10,6 +10,8 @@ const MindMap = (props: ElementsHolderProps) => {
     let minds = props.mindPage && props.mindPage.minds;
     let id = props.mindPage && props.mindPage.id;
 
+    console.log(minds)
+
     const {scaleRate} = props;
 
     const mindsDispatch = props.mindsDispatch;
@@ -21,8 +23,8 @@ const MindMap = (props: ElementsHolderProps) => {
         
         const parent = minds.find(m => parentId === m.id); 
 
-        if(parent) {
-            const x2ForLine = mind?.position.x - parent?.position.x
+        if (parent) {
+            const x2ForLine = mind?.position.x - parent?.position.x - parent.averageMindDimenstionsInPx.width/2 + mind.averageMindDimenstionsInPx.width/2
             const y2ForLine = mind?.position.y - parent?.position.y;
 
             const parentX = parent?.position.x + (parent.averageMindDimenstionsInPx.width / 2);

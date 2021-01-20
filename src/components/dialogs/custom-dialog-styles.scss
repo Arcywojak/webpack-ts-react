@@ -56,4 +56,9 @@
     margin: 12px 0 7px;
     color: gray;
     font-weight: 400;
+
+    &.with-input{
+        display:flex;
+        justify-content: space-between;
+    }
 }

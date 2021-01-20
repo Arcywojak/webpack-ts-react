@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import './create-mind-button.scss'; 
-import CreateMindDialog from '../../../dialogs/create-mind-dialog/create-mind-dialog';
+import ManipulateMindDialog from '../../../dialogs/manipulate-mind-dialog/manipulate-mind-dialog';
 import {CreateMindButtonProps } from '../../../../models/components-props';
+import {ManipulateMindAction} from '../../../../models/enums';
 import Snackbar from '@material-ui/core/Snackbar';
 
 const CreateMindButton = (props: CreateMindButtonProps) => {
@@ -32,7 +33,7 @@ const CreateMindButton = (props: CreateMindButtonProps) => {
             <div className="plus-horizontal-line"></div>
         </div>
 
-        <CreateMindDialog pageId={props.pageId}  open={openDialog} onClose={handleCloseDialog} />
+        <ManipulateMindDialog pageId={props.pageId} manipulateMindAction={ManipulateMindAction.CreateMind}  open={openDialog} onClose={handleCloseDialog} />
 
         <Snackbar
         anchorOrigin={{

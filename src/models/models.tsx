@@ -24,7 +24,8 @@ export interface Mind {
     name: string;
     position: Position;
     averageMindDimenstionsInPx: Dimensions;
-    colorStyle: ColorStyle
+    colorStyle: ColorStyle;
+    areColoursReversed: boolean
 }
 
 export interface MindAction {

@@ -7,9 +7,13 @@ export class LocalStorageService {
     }
 
     public getItems()  {
-        const items = JSON.parse(localStorage.getItem(this.objectName) || '') || [];
+        const items = localStorage.getItem(this.objectName);
 
-        return items;
+        if (items) { 
+            return JSON.parse(items);
+        }
+
+        return [];
     }
 
     public setItems(data: any) {

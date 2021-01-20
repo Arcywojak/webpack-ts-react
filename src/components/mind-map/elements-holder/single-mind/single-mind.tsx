@@ -70,9 +70,9 @@ const SingleMind = (props: SingleMindProps) => {
 
     const styles = {
         transform: `translate(${blockPosition.x}px, ${blockPosition.y}px)`,
-        backgroundColor: mind.colorStyle.backgroundColor,
-        color: mind.colorStyle.color,
-        borderColor: mind.colorStyle.borderColor
+        backgroundColor: mind.areColoursReversed ? mind.colorStyle.color : mind.colorStyle.backgroundColor,
+        color: mind.areColoursReversed ? mind.colorStyle.backgroundColor : mind.colorStyle.color,
+        borderColor: mind.areColoursReversed ? mind.colorStyle.backgroundColor : mind.colorStyle.borderColor,
     }
 
     return (
