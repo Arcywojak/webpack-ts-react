@@ -13,6 +13,7 @@ import Radio from '@material-ui/core/Radio';
 import {DEFAULT_COLOR_STYLE, COLOR_STYLES} from '../../../constants/colors_const';
 import Checkbox from '@material-ui/core/Checkbox';
 import { ManipulateMindAction } from '../../../models/enums';
+import {LETTER_WIDTH, LETTER_HEIGHT, TOP_AND_BOTTOM_PADDING, MIN_BLOCK_WIDTH, MAX_BLOCK_WIDTH} from '../../../constants/mind_dimenstions_const';
 
 const ManipulateMindDialog: React.FC<ManipulateMindDialogProps> = (props) => {
     const {onClose, open, parentId, pageId, manipulateMindAction, mind} = props;
@@ -52,25 +53,18 @@ const ManipulateMindDialog: React.FC<ManipulateMindDialogProps> = (props) => {
         onClose()
     }
 
-    const letterWidth = 9.61;
-    const letterHeight = 21;
-    const leftAndRightPadding = 16;
-    const topAndBottomPadding = 20
-    const minBlockWidth = 130 + leftAndRightPadding;
-    const maxBlockWidth = 330 + leftAndRightPadding;
-
     const calculateAverageMindHeight = (text: string) => {
-     const widthOfLetters = text.length * letterWidth;
+     const widthOfLetters = text.length * LETTER_WIDTH;
     
-     return (Math.ceil(widthOfLetters / maxBlockWidth)) * letterHeight + topAndBottomPadding;
+     return (Math.ceil(widthOfLetters / MAX_BLOCK_WIDTH)) * LETTER_HEIGHT + TOP_AND_BOTTOM_PADDING;
     }
 
     const calculateAverageMindWidth = (text: string) => {
         
         
         return Math.min(
-            Math.max(minBlockWidth, Math.min(text.length * letterWidth, maxBlockWidth)),
-            maxBlockWidth
+            Math.max(MIN_BLOCK_WIDTH, Math.min(text.length * LETTER_WIDTH, MAX_BLOCK_WIDTH)),
+            MAX_BLOCK_WIDTH
         )
     }
 

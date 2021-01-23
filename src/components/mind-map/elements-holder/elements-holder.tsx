@@ -10,8 +10,6 @@ const MindMap = (props: ElementsHolderProps) => {
     let minds = props.mindPage && props.mindPage.minds;
     let id = props.mindPage && props.mindPage.id;
 
-    console.log(minds)
-
     const {scaleRate} = props;
 
     const mindsDispatch = props.mindsDispatch;
