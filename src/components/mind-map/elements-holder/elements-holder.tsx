@@ -39,10 +39,12 @@ const MindMap = (props: ElementsHolderProps) => {
                     viewBox="0 0 10 10" refX="45" refY="5" 
                     markerUnits="strokeWidth"
                     markerWidth="10" markerHeight="8"
+                    fill={parent?.areColoursReversed ? parent?.colorStyle.color : parent?.colorStyle.backgroundColor}
                     orient="auto">
                     <path d="M 0 0 L 10 5 L 0 10 z" />
                     </marker>
-                    <line markerEnd={`url(#triangle-${mind.id})`} x1="0" y1="0" x2={`${x2ForLine}px`} y2={`${y2ForLine}px`}>
+                    <line markerEnd={`url(#triangle-${mind.id})`} x1="0" y1="0" x2={`${x2ForLine}px`} y2={`${y2ForLine}px`}
+                    stroke={parent?.areColoursReversed ? parent?.colorStyle.color : parent?.colorStyle.backgroundColor}>
 
                     </line>
                 </svg>

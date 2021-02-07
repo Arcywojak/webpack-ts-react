@@ -18,12 +18,7 @@
 .svg-line{
     position: absolute;
     overflow: visible;
-
-    marker{
-        fill: $primaryLight;
-    }
     line{
         stroke-width:2px;
-        stroke:$primaryLight;
     }
 }

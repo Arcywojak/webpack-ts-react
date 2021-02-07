@@ -18,15 +18,15 @@ export const COLOR_STYLES = [
     DEFAULT_COLOR_STYLE,
     {
         colorStyleId: 2,
-        backgroundColor: "#1f4287",
-        color: "#071e3d",
-        borderColor: "#071e3d"
+        backgroundColor: "#a7ff83",
+        color: "#071a52",
+        borderColor: "#071a52"
     },
     {
         colorStyleId: 3,
-        backgroundColor: "#fc5c9c",
-        color: "#c5e3f6",
-        borderColor: "#c5e3f6"
+        backgroundColor: "#d72323",
+        color: "#3e3636",
+        borderColor: "#3e3636"
     },
     {
         colorStyleId: 4,
@@ -36,8 +36,14 @@ export const COLOR_STYLES = [
     },
     {
         colorStyleId: 5,
-        backgroundColor: "#1f4287",
-        color: "#071e3d",
-        borderColor: "#071e3d"
+        backgroundColor: "#ac3f21",
+        color: "#f3cf7a",
+        borderColor: "#f3cf7a"
+    },
+    {
+        colorStyleId: 6,
+        backgroundColor: "#f5eded",
+        color: "#000000",
+        borderColor: "#000000"
     },
 ] as ColorStyle[];
