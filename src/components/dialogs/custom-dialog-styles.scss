@@ -37,6 +37,13 @@
     font-weight: 500;
 }
 
+.MuiFormGroup-root.color-inputs-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+    justify-content: center;
+}
+
 .colors-radio-input{
     display: flex;
     flex-direction: row;

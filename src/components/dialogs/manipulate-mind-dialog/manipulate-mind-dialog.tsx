@@ -159,7 +159,7 @@ const ManipulateMindDialog: React.FC<ManipulateMindDialogProps> = (props) => {
                         label="Reverse colours"
                     />
                     </div>
-                    <RadioGroup  aria-label="Color style" name="color" value={colorStyle} onChange={handleChangeColor}>
+                    <RadioGroup className="color-inputs-wrapper"  aria-label="Color style" name="color" value={colorStyle} onChange={handleChangeColor}>
                         {
                             COLOR_STYLES.map(color => {
 
