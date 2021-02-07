@@ -44,6 +44,7 @@ export class SingleMindButtonsProps {
     pageId: string;
     mind: Mind;
     canDialogBeOpen: boolean;
+    setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export class CreateMindButtonProps {

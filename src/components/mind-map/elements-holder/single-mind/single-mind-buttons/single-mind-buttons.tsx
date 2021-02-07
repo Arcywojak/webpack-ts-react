@@ -9,7 +9,7 @@ import {SingleMindButtonsProps} from '../../../../../models/components-props';
 import {ManipulateMindAction} from '../../../../../models/enums';
 
 const SingleMindButtons = (props: SingleMindButtonsProps) => {
-    const {mind, canDialogBeOpen, pageId} = props;
+    const {mind, canDialogBeOpen, pageId, setIsDialogOpen} = props;
 
     const [openAddDialog, setOpenManipulateDialog] = useState(false);
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -18,21 +18,25 @@ const SingleMindButtons = (props: SingleMindButtonsProps) => {
     const handleOpenManipulateDialog = (action: ManipulateMindAction) => {
         if (canDialogBeOpen) {
           setMindAction(action);
+          setIsDialogOpen(true);
           setOpenManipulateDialog(true);
         }
       };
     
     const handleCloseManipulateDialog = () => {
+        setIsDialogOpen(false);
         setOpenManipulateDialog(false);
       };
 
     const handleOpenDeleteDialog = () => {
         if (canDialogBeOpen) {
+            setIsDialogOpen(true);
             setOpenDeleteDialog(true);
         }
       };
     
     const handleCloseDeleteDialog = () => {
+        setIsDialogOpen(false);
         setOpenDeleteDialog(false);
       };
 

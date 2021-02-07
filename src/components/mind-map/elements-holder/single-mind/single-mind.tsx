@@ -13,11 +13,12 @@ const SingleMind = (props: SingleMindProps) => {
     const [mousePositionWithinBlock, setMousePositionWithinBlock] = useState({x:0,y:0} as Position);
     const [canMindBeMoved, setCanMindBeMoved] = useState(false);
     const [canDialogBeOpen, setCanDialogBeOpen] = useState(true);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleMouseMove = (e: any) => {
         e.preventDefault();
 
-        if (!canMindBeMoved) {
+        if (!canMindBeMoved || isDialogOpen) {
             return;
         }
 
@@ -41,6 +42,8 @@ const SingleMind = (props: SingleMindProps) => {
     }
 
     const activateMovingMind = (e: any) => {
+        
+        
         setCanMindBeMoved(true);
 
         const parentDistanceFromTheTopY = e.currentTarget.parentNode.getBoundingClientRect().top
@@ -54,6 +57,7 @@ const SingleMind = (props: SingleMindProps) => {
     const deactivateMovingMind = () => {
         setCanMindBeMoved(false);
 
+        // If user moves the mind i suppose that the he does not want to open some dialog 
         if ( positionBeforeMove === blockPosition ) {
             setCanDialogBeOpen(true);
         } else {
@@ -86,7 +90,7 @@ const SingleMind = (props: SingleMindProps) => {
             onMouseLeave={deactivateMovingMind}>
                 <p className="mind__paragraph">{mind.name}</p>
 
-                <SingleMindButtons canDialogBeOpen={canDialogBeOpen} mind={mind} pageId={pageId}/>
+                <SingleMindButtons canDialogBeOpen={canDialogBeOpen} setIsDialogOpen={setIsDialogOpen} mind={mind} pageId={pageId}/>
 
             </div>
         </>
