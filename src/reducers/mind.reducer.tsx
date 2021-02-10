@@ -59,8 +59,13 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                     return mindMap;
                 })
                 break;
+            
+            case mindActionTypes.RemoveMindPage:
+                
+                newState = state.filter(mindPage => mindPage.id !== action.pageId);
+                break;
 
-            default: break;
+            default: return state;
         }
 
         if (!action.shouldSavingBePrevented) {

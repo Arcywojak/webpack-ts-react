@@ -4,19 +4,24 @@ import AddIcon from '@material-ui/icons/Add';
 import { MindPage} from '../../../models/models';
 import {SideBarProps} from '../../../models/components-props';
 import CreateMindPageDialog from '../../dialogs/create-mind-page-dialog/create-mind-page-dialog';
+import DeleteMindPageDialog from '../../dialogs/delete-mind-page-dialog/delete-mind-page-dialog';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import closeTriangleUrl from '../../../assets/images/closeTriangle.svg';
 
 const SideBar = (props: SideBarProps) => {
     const {mindPages, currentPageId, setCurrentPage} = props;
     const [isSideBarHidden, setIsSidebarHidden] = useState(false);
-    const [openDialog, setOpenDialog] = useState(false);
+    const [openCreateDialog, setOpenCreateDialog] = useState(false);
+    const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+    const [mindPageToDelete, setMindPageToDelete] = useState({} as MindPage);
+
 
     const handleClickOpenDialog = () => {
-        setOpenDialog(true);
+        setOpenCreateDialog(true);
       };
     
-      const handleCloseDialog = () => {
-        setOpenDialog(false);
+      const handleCloseCreateDialog = () => {
+        setOpenCreateDialog(false);
       };
 
       const toggleSideBar = () => {
@@ -26,6 +31,16 @@ const SideBar = (props: SideBarProps) => {
     const handleClickChangePage = (mindPage: MindPage) => {
         setCurrentPage(mindPage);
     };
+
+    const handleOpenDeleteDialog = (mindPage: MindPage) => {
+        setMindPageToDelete(mindPage);
+        setOpenDeleteDialog(true);
+      };
+
+    const handleCloseDeleteDialog = () => {
+        setOpenDeleteDialog(false);
+      };
+
 
     return (
         <>
@@ -41,6 +56,9 @@ const SideBar = (props: SideBarProps) => {
                     return (
                         <div onClick={() => {handleClickChangePage(mp)}} key={mp.id} className={`mind-map-button item ${mp.id === currentPageId ? "active" : ""}`}>
                             {mp.name}
+                            <div className="delete-mind-map-button" onClick={() => {handleOpenDeleteDialog(mp)}}>
+                                <DeleteForeverIcon/>
+                            </div>
                         </div>
                     )
                 })}
@@ -49,8 +67,9 @@ const SideBar = (props: SideBarProps) => {
                 <img src={closeTriangleUrl} alt=""/>
             </div>
         </aside> 
-        <CreateMindPageDialog open={openDialog} onClose={handleCloseDialog} />
+        <CreateMindPageDialog open={openCreateDialog} onClose={handleCloseCreateDialog} />
 
+        <DeleteMindPageDialog open={openDeleteDialog} onClose={handleCloseDeleteDialog} mindPage={mindPageToDelete}/>
         </>
     )
 }

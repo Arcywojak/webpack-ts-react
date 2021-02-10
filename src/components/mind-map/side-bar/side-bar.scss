@@ -47,6 +47,7 @@
 }
 
 .mind-map-button{
+    position: relative;
     text-align: center;
     padding: 5px;
     cursor: pointer;
@@ -69,5 +70,27 @@
 
     &:hover, &.active{
         background-color: darken($primaryLight, 5%);
+    }
+    &:hover .delete-mind-map-button{
+        opacity: 1;
+    }
+}
+
+.delete-mind-map-button{
+    position: absolute;
+    right: 15px;
+    fill: $primaryDark;
+    top: calc(50% - 12.5px);
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    transition: opacity ease-in-out 0.3s;
+    opacity: 0.1;
+
+    .MuiSvgIcon-root{
+        height:25px;
+        width: 25px;
+
     }
 }

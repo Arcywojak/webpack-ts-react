@@ -40,6 +40,12 @@ export class CreateMindMapDialogProps {
     onClose: () => void;
 }
 
+export class DeleteMindMapDialogProps {
+    mindPage: MindPage;
+    open: boolean;
+    onClose: () => void;
+}
+
 export class SingleMindButtonsProps {
     pageId: string;
     mind: Mind;
