@@ -1,1 +1,2 @@
-# webpack-ts-react - I wish this app would be a kind of a mind map... we will see
+## Mind map app done in *webpack-react-typescript*
+### By doing the project I wanted to practise how webpack works and how to set up react-typescript enviroment in it.
