@@ -2,7 +2,7 @@ import '../custom-dialog-styles.scss';
 import React, {useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {mindActionTypes} from '../../../models/models';
+import {MindActionTypes} from '../../../models/enums';
 import {DeleteMindMapDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import Button from '@material-ui/core/Button'; 
@@ -17,7 +17,7 @@ const DeleteMindPageDialog = (props: DeleteMindMapDialogProps) => {
 
     const handleSubmit = () => {
         mindsDispatch({
-            type: mindActionTypes.RemoveMindPage,
+            type: MindActionTypes.RemoveMindPage,
             pageId: mindPage.id
         });
 

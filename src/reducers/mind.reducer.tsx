@@ -1,18 +1,19 @@
-import {mindActionTypes, Mind, MindAction, MindPage} from '../models/models';
+import {MindAction, MindPage} from '../models/models';
 import {LocalStorageService} from '../services/localStorage.service';
+import {MindActionTypes} from '../models/enums';
 
-const localStorageService = new LocalStorageService('mind')
+const localStorageService = new LocalStorageService('mind');
 
 export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] => {
     let currentMindPage = state.find(mindMap => mindMap.id === action.pageId) as MindPage;
     let newState: MindPage[] = [];
 
         switch (action.type) {
-            case mindActionTypes.AddMindPage:
+            case MindActionTypes.AddMindPage:
                 newState = [...state, action.mindPage] as MindPage[];
                 break;
                 
-            case mindActionTypes.AddMind:
+            case MindActionTypes.AddMind:
                 currentMindPage.minds.push(action.mind!);
 
                 newState = state.map(mindMap => {
@@ -24,7 +25,7 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                  
                 break;
 
-            case mindActionTypes.UpdateMind:
+            case MindActionTypes.UpdateMind:
                 currentMindPage.minds.map(mind => {
                     if (mind.id === action?.mind?.id) {
                         return action.mind;
@@ -41,7 +42,7 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                  
                 break;
 
-            case mindActionTypes.RemoveMind:
+            case MindActionTypes.RemoveMind:
                 let idsToRemove = [action.mindId];
                 currentMindPage.minds = currentMindPage?.minds.filter(mp => {
                     const idToRemove = idsToRemove.find(id => id === mp.id || id === mp.parentId);
@@ -60,7 +61,7 @@ export const mindReducer = (state: MindPage[], action: MindAction): MindPage[] =
                 })
                 break;
             
-            case mindActionTypes.RemoveMindPage:
+            case MindActionTypes.RemoveMindPage:
                 
                 newState = state.filter(mindPage => mindPage.id !== action.pageId);
                 break;

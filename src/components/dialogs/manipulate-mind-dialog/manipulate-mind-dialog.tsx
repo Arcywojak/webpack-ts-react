@@ -1,7 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react';
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {Mind, mindActionTypes, Position, Dimensions, ColorStyle} from '../../../models/models';
+import {Mind, Position, Dimensions, ColorStyle} from '../../../models/models';
+import {MindActionTypes} from '../../../models/enums';
 import {ManipulateMindDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import TextField from '@material-ui/core/TextField';
@@ -84,7 +85,7 @@ const ManipulateMindDialog: React.FC<ManipulateMindDialogProps> = (props) => {
         } as Mind;
 
         mindsDispatch({
-            type: mindActionTypes.AddMind,
+            type: MindActionTypes.AddMind,
             mind: newMind,
             pageId: pageId
         });
@@ -107,7 +108,7 @@ const ManipulateMindDialog: React.FC<ManipulateMindDialogProps> = (props) => {
             newMind.averageMindDimenstionsInPx = {width: averageMindWidth, height: averageMindHeight} as Dimensions,
 
             mindsDispatch({
-                type: mindActionTypes.UpdateMind,
+                type: MindActionTypes.UpdateMind,
                 mind: newMind,
                 pageId: pageId
             });

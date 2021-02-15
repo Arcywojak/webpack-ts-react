@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {mindActionTypes} from '../../../models/models';
+import {MindActionTypes} from '../../../models/enums';
 import {DeleteMindDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import Button from '@material-ui/core/Button'; 
@@ -19,7 +19,7 @@ const DeleteMindDialog = (props: DeleteMindDialogProps) => {
         const mind = page && page.minds.find(m => m.id === mindId);
 
         mindsDispatch({
-            type: mindActionTypes.RemoveMind,
+            type: MindActionTypes.RemoveMind,
             pageId: pageId,
             mindId: mind && mind.id
         })

@@ -2,7 +2,9 @@ import '../custom-dialog-styles.scss';
 import React, {useState, useContext} from 'react'
 import '../custom-dialog-styles.scss';
 import Dialog from '@material-ui/core/Dialog';
-import {mindActionTypes, MindPage} from '../../../models/models';
+import {MindPage} from '../../../models/models';
+import {MindActionTypes} from '../../../models/enums';
+
 import {CreateMindMapDialogProps} from '../../../models/components-props';
 import {MindContext} from '../../../contexts/mind.context';
 import TextField from '@material-ui/core/TextField';
@@ -31,7 +33,7 @@ const CreateMindPageDialog = (props: CreateMindMapDialogProps) => {
         } as MindPage
 
         mindsDispatch({
-            type: mindActionTypes.AddMindPage,
+            type: MindActionTypes.AddMindPage,
             mindPage: newMindPage
         });
 

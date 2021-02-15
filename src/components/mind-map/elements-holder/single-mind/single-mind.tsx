@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {mindActionTypes, Position} from '../../../../models/models';
+import {Position} from '../../../../models/models';
+import {MindActionTypes} from '../../../../models/enums';
 import {SingleMindProps} from '../../../../models/components-props';
 import './single-mind.scss';
 import SingleMindButtons from './single-mind-buttons/single-mind-buttons';
@@ -34,7 +35,7 @@ const SingleMind = (props: SingleMindProps) => {
         updatedMind.position = blockPosition;
 
         mindDispatch({
-            type: mindActionTypes.UpdateMind,
+            type: MindActionTypes.UpdateMind,
             mind: updatedMind,
             pageId: pageId,
             shouldSavingBePrevented: true
@@ -65,7 +66,7 @@ const SingleMind = (props: SingleMindProps) => {
             setCanDialogBeOpen(false);
 
             mindDispatch({
-                type: mindActionTypes.UpdateMind,
+                type: MindActionTypes.UpdateMind,
                 mind: mind,
                 pageId: pageId
             });

@@ -1,11 +1,4 @@
-
-export enum mindActionTypes {
-    AddMind = 1,
-    RemoveMind = 2,
-    UpdateMind = 3,
-    AddMindPage = 4,
-    RemoveMindPage = 5
-}
+import {MindActionTypes} from './enums';
 
 export interface Position {
     x: number;
@@ -29,7 +22,7 @@ export interface Mind {
 }
 
 export interface MindAction {
-    type: mindActionTypes;
+    type: MindActionTypes;
     pageId?: string;
     mind?: Mind;
     mindId?: string;

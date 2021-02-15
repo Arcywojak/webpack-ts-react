@@ -1,20 +1,25 @@
 import {Mind, MindAction, MindPage} from './models';
 import {ManipulateMindAction} from './enums';
 
-export class SingleMindProps {
+export interface SingleMindProps {
     scaleRate: number;
     mind: Mind;
     pageId: string;
     mindDispatch: React.Dispatch<MindAction>;
 }
 
-export class ElementsHolderProps {
+export interface ElementsHolderProps {
     scaleRate: number;
     mindPage: MindPage;
     mindsDispatch: React.Dispatch<MindAction>;
 }
 
-export class ManipulateMindDialogProps {
+export interface LineBetweenMindsProps {
+    mindFrom?: Mind;
+    mindTo: Mind;
+}
+
+export interface ManipulateMindDialogProps {
     open: boolean;
     pageId: string;
     parentId?: string;
@@ -23,41 +28,41 @@ export class ManipulateMindDialogProps {
     onClose: () => void;
 }
 
-export class DeleteMindDialogProps {
+export interface DeleteMindDialogProps {
     open: boolean;
     pageId: string;
     mindId: string;
     onClose: () => void;
 }
 
-export class ScaleSliderProps {
+export interface ScaleSliderProps {
     scaleRate: number;
     setScaleRate: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export class CreateMindMapDialogProps {
+export interface CreateMindMapDialogProps {
     open: boolean;
     onClose: () => void;
 }
 
-export class DeleteMindMapDialogProps {
+export interface DeleteMindMapDialogProps {
     mindPage: MindPage;
     open: boolean;
     onClose: () => void;
 }
 
-export class SingleMindButtonsProps {
+export interface SingleMindButtonsProps {
     pageId: string;
     mind: Mind;
     canDialogBeOpen: boolean;
     setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export class CreateMindButtonProps {
+export interface CreateMindButtonProps {
     pageId: string;
 }
 
-export class SideBarProps {
+export interface SideBarProps {
     mindPages: MindPage[];
     currentPageId: string;
     setCurrentPage: React.Dispatch<React.SetStateAction<MindPage>>;
