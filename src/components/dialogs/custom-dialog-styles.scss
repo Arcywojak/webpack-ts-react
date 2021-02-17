@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width:90vw;
+    max-width:95vw;
     max-width: 500px;
     text-align: center;
 
@@ -48,6 +48,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    .MuiFormControlLabel-root{
+        margin-right: 4px;
+    }
 }
 
 .color-style-appearance{
@@ -69,3 +73,4 @@
         justify-content: space-between;
     }
 }
+
