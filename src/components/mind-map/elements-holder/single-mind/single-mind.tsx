@@ -17,14 +17,23 @@ const SingleMind = (props: SingleMindProps) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleMouseMove = (e: any) => {
-        e.preventDefault();
+
+        let mouseX: number = 0;
+        let mouseY: number = 0;
+
+        // e.touches decects if we are on touch-sensitive device
+        // If we are, then me we must use other properties than in the mouse events
+        if(e.touches) {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        } else {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        }
 
         if (!canMindBeMoved || isDialogOpen) {
             return;
         }
-
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
 
         setBlockPosition({
             x: (mouseX*(1/scaleRate) - mousePositionWithinBlock.x),
@@ -43,15 +52,26 @@ const SingleMind = (props: SingleMindProps) => {
     }
 
     const activateMovingMind = (e: any) => {
-        
+        let mouseX: number;
+        let mouseY: number;
+
+        // e.touches decects if we are on touch-sensitive device
+        // If we are, then me we must use other properties than in the mouse events
+        if (e.touches) {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        } else {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        }
         
         setCanMindBeMoved(true);
 
         const parentDistanceFromTheTopY = e.currentTarget.parentNode.getBoundingClientRect().top
 
         setMousePositionWithinBlock({
-            x: (e.clientX - e.currentTarget.getBoundingClientRect().left)*(1/scaleRate),
-            y: (e.clientY + parentDistanceFromTheTopY - e.currentTarget.getBoundingClientRect().top)*(1/scaleRate)
+            x: (mouseX - e.currentTarget.getBoundingClientRect().left)*(1/scaleRate),
+            y: (mouseY + parentDistanceFromTheTopY - e.currentTarget.getBoundingClientRect().top)*(1/scaleRate)
          });
     }
 
@@ -88,7 +108,12 @@ const SingleMind = (props: SingleMindProps) => {
             onMouseMove={handleMouseMove} 
             onMouseUp={deactivateMovingMind}  
             onMouseDown={activateMovingMind} 
-            onMouseLeave={deactivateMovingMind}>
+            onMouseLeave={deactivateMovingMind}
+            
+            onTouchStart={activateMovingMind}
+            onTouchEnd={deactivateMovingMind}
+            onTouchMove={handleMouseMove}
+            >
                 <p className="mind__paragraph">{mind.name}</p>
 
                 <SingleMindButtons canDialogBeOpen={canDialogBeOpen} setIsDialogOpen={setIsDialogOpen} mind={mind} pageId={pageId}/>
