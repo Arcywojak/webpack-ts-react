@@ -4,6 +4,7 @@ import {MindContext} from '../../contexts/mind.context';
 import ElementsHolder from './elements-holder/elements-holder';
 import SideBar from './side-bar/side-bar';
 import ScaleSlider from './scale-slider/scale-slider';
+import {MindPage} from '../../models/models';
 
 const MindMap = () => {
     const {mindPages, mindsDispatch} = useContext(MindContext);
@@ -12,7 +13,7 @@ const MindMap = () => {
 
     return (
         <div className="mind-map">
-            <SideBar mindPages={mindPages} currentPageId={currentPage && currentPage.id} setCurrentPage={setCurrentPage}/>
+            <SideBar mindPages={mindPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
 
             <ElementsHolder scaleRate={scaleRate} mindPage={currentPage} mindsDispatch={mindsDispatch} /> 
 

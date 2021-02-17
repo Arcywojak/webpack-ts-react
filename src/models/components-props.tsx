@@ -48,7 +48,7 @@ export interface CreateMindMapDialogProps {
 export interface DeleteMindMapDialogProps {
     mindPage: MindPage;
     open: boolean;
-    onClose: () => void;
+    onClose: (wasMindPageDeleted?: boolean) => void;
 }
 
 export interface SingleMindButtonsProps {
@@ -64,6 +64,6 @@ export interface CreateMindButtonProps {
 
 export interface SideBarProps {
     mindPages: MindPage[];
-    currentPageId: string;
+    currentPage: MindPage;
     setCurrentPage: React.Dispatch<React.SetStateAction<MindPage>>;
 }

@@ -11,8 +11,8 @@ const DeleteMindPageDialog = (props: DeleteMindMapDialogProps) => {
     const {onClose, open, mindPage} = props;
     const {mindsDispatch} = useContext(MindContext);
 
-    const handleClose = () => {
-        onClose()
+    const handleClose = (wasMindPageDeleted: boolean = false) => {
+        onClose(wasMindPageDeleted)
     }
 
     const handleSubmit = () => {
@@ -21,23 +21,23 @@ const DeleteMindPageDialog = (props: DeleteMindMapDialogProps) => {
             pageId: mindPage.id
         });
 
-        handleClose();
+        handleClose(true);
     }
 
 
     return (
-        <Dialog onClose={handleClose}  open={open}>
+        <Dialog onClose={() => {handleClose()}}  open={open}>
             <div className="dialog">
-                <h3 className="dialog-title">Are you sure to delete mind page called <i></i></h3>
+                <h3 className="dialog-title">Are you sure to delete mind page called <i>{mindPage.name}</i>?</h3>
                 <form>
                     <div className="buttons-wrapper">
                         <div>
                             <Button onClick={handleSubmit} variant="contained" color="primary" className="dialog-button">
-                                Save
+                                Delete
                             </Button>
                         </div>   
                         <div>
-                            <Button onClick={handleClose} variant="contained" className="dialog-button" >
+                            <Button onClick={() => {handleClose()}} variant="contained" className="dialog-button" >
                                 Discard
                             </Button>
                         </div>          

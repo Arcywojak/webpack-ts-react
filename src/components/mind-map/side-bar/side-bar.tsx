@@ -9,7 +9,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import closeTriangleUrl from '../../../assets/images/closeTriangle.svg';
 
 const SideBar = (props: SideBarProps) => {
-    const {mindPages, currentPageId, setCurrentPage} = props;
+    const {mindPages, currentPage, setCurrentPage} = props;
     const [isSideBarHidden, setIsSidebarHidden] = useState(false);
     const [openCreateDialog, setOpenCreateDialog] = useState(false);
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -37,7 +37,10 @@ const SideBar = (props: SideBarProps) => {
         setOpenDeleteDialog(true);
       };
 
-    const handleCloseDeleteDialog = () => {
+    const handleCloseDeleteDialog = (deleted?: boolean) => {
+        if (deleted) {
+            setCurrentPage({} as MindPage);
+        }
         setOpenDeleteDialog(false);
       };
 
@@ -54,7 +57,7 @@ const SideBar = (props: SideBarProps) => {
                 </div>
                 {mindPages && mindPages.map(mp => {
                     return (
-                        <div onClick={() => {handleClickChangePage(mp)}} key={mp.id} className={`mind-map-button item ${mp.id === currentPageId ? "active" : ""}`}>
+                        <div onClick={() => {handleClickChangePage(mp)}} key={mp.id} className={`mind-map-button item ${mp.id === currentPage?.id ? "active" : ""}`}>
                             {mp.name}
                             <div className="delete-mind-map-button" onClick={() => {handleOpenDeleteDialog(mp)}}>
                                 <DeleteForeverIcon/>
