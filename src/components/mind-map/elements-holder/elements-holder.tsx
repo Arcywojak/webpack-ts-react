@@ -4,6 +4,7 @@ import SingleMind from './single-mind/single-mind';
 import './elements-holder.scss';
 import CreateMindButton from './create-mind-button/create-mind-button';
 import LineBetweenMinds from './line-between-minds/line-between-minds';
+import NoMindPageSelectedMessage from './no-mind-page-selected-message/no-mind-page-selected-message';
 
 const MindMap = (props: ElementsHolderProps) => {
 
@@ -29,7 +30,7 @@ const MindMap = (props: ElementsHolderProps) => {
                 )
             })}
 
-            {id ? (<CreateMindButton pageId={id}/>) : (null)}
+            {id ? (<CreateMindButton pageId={id}/>) : (<NoMindPageSelectedMessage/>)}
             
 
         </div>

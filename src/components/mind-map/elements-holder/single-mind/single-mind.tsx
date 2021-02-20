@@ -67,7 +67,7 @@ const SingleMind = (props: SingleMindProps) => {
         
         setCanMindBeMoved(true);
 
-        const parentDistanceFromTheTopY = e.currentTarget.parentNode.getBoundingClientRect().top
+        const parentDistanceFromTheTopY = e.currentTarget.parentNode.parentNode.getBoundingClientRect().top
 
         setMousePositionWithinBlock({
             x: (mouseX - e.currentTarget.getBoundingClientRect().left)*(1/scaleRate),
